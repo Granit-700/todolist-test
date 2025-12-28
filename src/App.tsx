@@ -1,8 +1,9 @@
+import { useState } from "react";
+import TodoAdd from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
 function App() {
-
-  const todos = [
+  const initTodos = [
     {
       id: 1,
       text: "todo"
@@ -13,9 +14,16 @@ function App() {
     },
   ];
 
+  const [todos, setTodos] = useState(initTodos);
+
+  const createTodo = (text: string) => {
+    setTodos([...todos, {id: Date.now(), text: text}])
+  };
+
   return (
     <div>
-      <TodoList todos={todos}/>
+      <TodoAdd createTodo={createTodo}/>
+      <TodoList todos={todos} />
     </div>
   );
 };

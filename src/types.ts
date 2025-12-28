@@ -13,3 +13,8 @@ export interface TodoItemProps {
 export interface TodoListProps {
   todos: TodoListType;
 }
+
+
+export interface TodoInputProps {
+  createTodo: (text: string) => void;
+};
