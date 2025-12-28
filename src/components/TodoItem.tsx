@@ -1,9 +1,13 @@
 import type { TodoItemProps } from "../types";
+import TodoRemove from "./TodoRemove";
 
-const TodoItem = ({todo}: TodoItemProps) => {
+const TodoItem = ({ todo, deleteTodo }: TodoItemProps) => {
   return (
     <li>
-      <p>{todo.text}</p>
+      <div style={{display: "inline-block"}}>
+        <p>{todo.text}</p>
+      </div>
+      <TodoRemove deleteTodo={deleteTodo} currentId={todo.id}/>
     </li>
   );
 };

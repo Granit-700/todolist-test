@@ -17,13 +17,18 @@ function App() {
   const [todos, setTodos] = useState(initTodos);
 
   const createTodo = (text: string) => {
-    setTodos([...todos, {id: Date.now(), text: text}])
+    setTodos([...todos, { id: Date.now(), text: text }])
+  };
+
+  const deleteTodo = (currentId: number) => {
+    const FilteredTodos = todos.filter(todo => todo.id !== currentId);
+    setTodos(FilteredTodos);
   };
 
   return (
     <div>
-      <TodoAdd createTodo={createTodo}/>
-      <TodoList todos={todos} />
+      <TodoAdd createTodo={createTodo} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} />
     </div>
   );
 };
