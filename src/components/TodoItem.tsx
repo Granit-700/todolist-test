@@ -4,18 +4,16 @@ import TodoEdit from "./TodoEdit";
 import TodoRemove from "./TodoRemove";
 
 const TodoItem = ({ todo, deleteTodo, updateTodo }: TodoItemProps) => {
-  const [isOpen, setIopen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <li>
-      <div style={{ display: "inline-block" }}>
-        <p>{todo.text}</p>
-      </div>
+      <span>{todo.text}</span>
       <TodoEdit
         updateTodo={updateTodo}
         todo={todo}
         isOpen={isOpen}
-        setIopen={setIopen}
+        setIsOpen={setIsOpen}
       />
       <TodoRemove deleteTodo={deleteTodo} currentId={todo.id} />
     </li>

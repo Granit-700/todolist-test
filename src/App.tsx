@@ -28,12 +28,14 @@ function App() {
     setTodos(filteredTodos);
   };
 
-  const updateTodo = (currentId: number, newText: string) => {
+  const updateTodo = (currentId: number, newText: string): boolean => {
     const trimmedText = newText.trim();
-    if (!trimmedText) return;
+    if (!trimmedText) return false;
     setTodos(todos.map(todo =>
       todo.id === currentId ? { ...todo, text: newText } : todo
     ));
+
+    return true;
   };
 
   return (
