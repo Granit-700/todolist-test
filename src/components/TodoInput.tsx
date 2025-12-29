@@ -7,7 +7,12 @@ const TodoInput = ({ createTodo }: TodoInputProps) => {
   return (
     <div>
       <input type="text" value={value} onChange={e => setValue(e.target.value)} />
-      <button onClick={() => createTodo(value)}>
+      <button
+        onClick={() => {
+          createTodo(value);
+          setValue("");
+        }}
+      >
         Add Todo
       </button>
     </div>
