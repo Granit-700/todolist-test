@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TodoAdd from "./components/TodoInput";
+import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div>
-      <TodoAdd createTodo={createTodo} />
+      <TodoInput createTodo={createTodo} />
       <TodoList
         todos={todos}
         deleteTodo={deleteTodo}
@@ -49,4 +49,3 @@ function App() {
 };
 
 export default App;
-``
