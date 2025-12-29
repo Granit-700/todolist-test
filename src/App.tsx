@@ -17,24 +17,24 @@ function App() {
   const [todos, setTodos] = useState(initTodos);
 
   const createTodo = (text: string) => {
-    setTodos([...todos, { id: Date.now(), text: text }]);
+    const trimmedText = text.trim();
+    if (trimmedText) {
+      setTodos([...todos, { id: Date.now(), text: trimmedText }]);
+    };
   };
 
   const deleteTodo = (currentId: number) => {
-    const FilteredTodos = todos.filter(todo => todo.id !== currentId);
-    setTodos(FilteredTodos);
+    const filteredTodos = todos.filter(todo => todo.id !== currentId);
+    setTodos(filteredTodos);
   };
 
   const updateTodo = (currentId: number, newText: string) => {
-    const newTodos = todos.map(todo => {
-      if (todo.id === currentId) {
-        return { id: currentId, text: newText };
-      } else return todo;
-    });
-    setTodos(newTodos);
+    const trimmedText = newText.trim();
+    if (!trimmedText) return;
+    setTodos(todos.map(todo =>
+      todo.id === currentId ? { ...todo, text: newText } : todo
+    ));
   };
-
-  console.log(todos);
 
   return (
     <div>
