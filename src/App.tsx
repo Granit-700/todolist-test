@@ -17,7 +17,7 @@ function App() {
   const [todos, setTodos] = useState(initTodos);
 
   const createTodo = (text: string) => {
-    setTodos([...todos, { id: Date.now(), text: text }])
+    setTodos([...todos, { id: Date.now(), text: text }]);
   };
 
   const deleteTodo = (currentId: number) => {
@@ -25,12 +25,28 @@ function App() {
     setTodos(FilteredTodos);
   };
 
+  const updateTodo = (currentId: number, newText: string) => {
+    const newTodos = todos.map(todo => {
+      if (todo.id === currentId) {
+        return { id: currentId, text: newText };
+      } else return todo;
+    });
+    setTodos(newTodos);
+  };
+
+  console.log(todos);
+
   return (
     <div>
       <TodoAdd createTodo={createTodo} />
-      <TodoList todos={todos} deleteTodo={deleteTodo} />
+      <TodoList
+        todos={todos}
+        deleteTodo={deleteTodo}
+        updateTodo={updateTodo}
+      />
     </div>
   );
 };
 
 export default App;
+``
