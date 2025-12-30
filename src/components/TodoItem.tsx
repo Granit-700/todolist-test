@@ -11,7 +11,12 @@ const TodoItem = ({ todo, deleteTodo, updateTodo }: TodoItemProps) => {
   return (
     <li>
       <span>{todo.text}</span>
-      <input type="checkbox" checked={isChecked} onClick={() => setIsChecked(!isChecked)}/>
+      <input
+        type="checkbox"
+        checked={isChecked}
+        onClick={() => setIsChecked(!isChecked)}
+        onChange={e => e.target.checked}
+      />
       <TodoEdit
         updateTodo={updateTodo}
         todo={todo}
