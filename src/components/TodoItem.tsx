@@ -6,9 +6,12 @@ import TodoRemove from "./TodoRemove";
 const TodoItem = ({ todo, deleteTodo, updateTodo }: TodoItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [isChecked, setIsChecked] = useState<boolean>(todo.isDone);
+
   return (
     <li>
       <span>{todo.text}</span>
+      <input type="checkbox" checked={isChecked} onClick={() => setIsChecked(!isChecked)}/>
       <TodoEdit
         updateTodo={updateTodo}
         todo={todo}

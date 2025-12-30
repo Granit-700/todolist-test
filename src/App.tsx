@@ -1,16 +1,19 @@
 import { useState } from "react";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
+import type { TodoListType } from "./types";
 
 function App() {
-  const initTodos = [
+  const initTodos: TodoListType = [
     {
       id: 1,
-      text: "todo"
+      text: "todo",
+      isDone: true,
     },
     {
       id: 2,
-      text: "todo"
+      text: "todo",
+      isDone: false,
     },
   ];
 
@@ -19,7 +22,11 @@ function App() {
   const createTodo = (text: string) => {
     const trimmedText = text.trim();
     if (trimmedText) {
-      setTodos([...todos, { id: Date.now(), text: trimmedText }]);
+      setTodos([...todos, {
+        id: Date.now(),
+        text: trimmedText,
+        isDone: false
+      }]);
     };
   };
 
@@ -32,7 +39,7 @@ function App() {
     const trimmedText = newText.trim();
     if (!trimmedText) return false;
     setTodos(todos.map(todo =>
-      todo.id === currentId ? { ...todo, text: newText } : todo
+      todo.id === currentId ? { ...todo, text: newText} : todo
     ));
 
     return true;

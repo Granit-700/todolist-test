@@ -6,8 +6,8 @@ const TodoEdit = ({ updateTodo, todo, isOpen, setIsOpen }: TodoEditProps) => {
 
   return (
     <>
-      {isOpen === true ?
-        (
+      {isOpen === true
+        ? (
           <>
             <input
               type="text"

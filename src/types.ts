@@ -1,6 +1,7 @@
 export interface TodoItemType {
   id: number;
   text: string;
+  isDone: boolean;
 };
 
 export type TodoListType = TodoItemType[];
