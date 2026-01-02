@@ -31,6 +31,5 @@ export interface TodoRemoveProps {
 export interface TodoEditProps {
   updateTodo: (currentId: number, newText: string) => boolean;
   todo: TodoItemType;
-  isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };

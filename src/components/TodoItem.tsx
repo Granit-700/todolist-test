@@ -10,20 +10,28 @@ const TodoItem = ({ todo, deleteTodo, updateTodo }: TodoItemProps) => {
 
   return (
     <li>
-      <span>{todo.text}</span>
-      <input
-        type="checkbox"
-        checked={isChecked}
-        onClick={() => setIsChecked(!isChecked)}
-        onChange={e => e.target.checked}
-      />
-      <TodoEdit
-        updateTodo={updateTodo}
-        todo={todo}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
-      <TodoRemove deleteTodo={deleteTodo} currentId={todo.id} />
+      {isOpen === true
+        ?
+        <TodoEdit
+          updateTodo={updateTodo}
+          todo={todo}
+          setIsOpen={setIsOpen}
+        />
+        :
+        <>
+          <span>{todo.text}</span>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onClick={() => setIsChecked(!isChecked)}
+            onChange={e => e.target.checked}
+          />
+          <button onClick={() => setIsOpen(true)}>
+            Edit
+          </button>
+          <TodoRemove deleteTodo={deleteTodo} currentId={todo.id} />
+        </>
+      }
     </li>
   );
 };

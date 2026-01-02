@@ -1,39 +1,30 @@
 import { useState } from "react";
 import type { TodoEditProps } from "../types";
 
-const TodoEdit = ({ updateTodo, todo, isOpen, setIsOpen }: TodoEditProps) => {
-  const [text, setText] = useState("");
+const TodoEdit = ({ updateTodo, todo, setIsOpen }: TodoEditProps) => {
+  const [text, setText] = useState(todo.text);
 
   return (
     <>
-      {isOpen === true
-        ? (
-          <>
-            <input
-              type="text"
-              value={text}
-              onChange={e => setText(e.target.value)}
-            />
-            <button
-              onClick={() => {
-                if (updateTodo(todo.id, text)) {
-                  setIsOpen(false);
-                };
-              }}
-            >
-              Save
-            </button>
-            <button onClick={() => setIsOpen(false)}>
-              close
-            </button>
-          </>
-        ) : (
-          <button onClick={() => setIsOpen(true)}>
-            Edit
-          </button>
-        )
-      }
+      <input
+        type="text"
+        value={text}
+        onChange={e => setText(e.target.value)}
+      />
+      <button
+        onClick={() => {
+          if (updateTodo(todo.id, text)) {
+            setIsOpen(false);
+          };
+        }}
+      >
+        Save
+      </button>
+      <button onClick={() => setIsOpen(false)}>
+        close
+      </button>
     </>
+
   );
 };
 
