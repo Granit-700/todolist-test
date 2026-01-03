@@ -1,23 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import type { TodoListType } from "./types";
 
 function TodoApp() {
-  const initTodos: TodoListType = [
-    {
-      id: 1,
-      text: "todo",
-      isDone: true,
-    },
-    {
-      id: 2,
-      text: "todo",
-      isDone: false,
-    },
-  ];
 
-  const [todos, setTodos] = useState(initTodos);
+  const [todos, setTodos] = useState<TodoListType>(() => {
+    const saved = localStorage.getItem("todos");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const createTodo = (text: string) => {
     const trimmedText = text.trim();
@@ -39,7 +34,7 @@ function TodoApp() {
     const trimmedText = newText.trim();
     if (!trimmedText) return false;
     setTodos(todos.map(todo =>
-      todo.id === currentId ? { ...todo, text: newText} : todo
+      todo.id === currentId ? { ...todo, text: newText } : todo
     ));
 
     return true;
