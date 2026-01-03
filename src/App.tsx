@@ -1,59 +1,8 @@
-import { useState } from "react";
-import TodoInput from "./components/TodoInput";
-import TodoList from "./components/TodoList";
-import type { TodoListType } from "./types";
+import TodoApp from "./TodoApp";
 
 function App() {
-  const initTodos: TodoListType = [
-    {
-      id: 1,
-      text: "todo",
-      isDone: true,
-    },
-    {
-      id: 2,
-      text: "todo",
-      isDone: false,
-    },
-  ];
-
-  const [todos, setTodos] = useState(initTodos);
-
-  const createTodo = (text: string) => {
-    const trimmedText = text.trim();
-    if (trimmedText) {
-      setTodos([...todos, {
-        id: Date.now(),
-        text: trimmedText,
-        isDone: false
-      }]);
-    };
-  };
-
-  const deleteTodo = (currentId: number) => {
-    const filteredTodos = todos.filter(todo => todo.id !== currentId);
-    setTodos(filteredTodos);
-  };
-
-  const updateTodo = (currentId: number, newText: string): boolean => {
-    const trimmedText = newText.trim();
-    if (!trimmedText) return false;
-    setTodos(todos.map(todo =>
-      todo.id === currentId ? { ...todo, text: newText} : todo
-    ));
-
-    return true;
-  };
-
   return (
-    <div>
-      <TodoInput createTodo={createTodo} />
-      <TodoList
-        todos={todos}
-        deleteTodo={deleteTodo}
-        updateTodo={updateTodo}
-      />
-    </div>
+    <TodoApp />
   );
 };
 
