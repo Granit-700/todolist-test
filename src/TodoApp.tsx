@@ -34,7 +34,9 @@ function TodoApp() {
     const trimmedText = newText.trim();
     if (!trimmedText) return false;
     setTodos(todos.map(todo =>
-      todo.id === currentId ? { ...todo, text: newText } : todo
+      todo.id === currentId
+        ? { ...todo, text: trimmedText}
+        : todo
     ));
 
     return true;
