@@ -30,12 +30,16 @@ function TodoApp() {
     setTodos(filteredTodos);
   };
 
-  const updateTodo = (currentId: number, newText: string): boolean => {
+  const updateTodo = (
+    currentId: number,
+    newText: string,
+    newIsDone: boolean
+  ): boolean => {
     const trimmedText = newText.trim();
     if (!trimmedText) return false;
     setTodos(todos.map(todo =>
       todo.id === currentId
-        ? { ...todo, text: trimmedText}
+        ? { ...todo, text: trimmedText, isDone: newIsDone }
         : todo
     ));
 

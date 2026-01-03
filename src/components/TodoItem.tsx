@@ -23,7 +23,11 @@ const TodoItem = ({ todo, deleteTodo, updateTodo }: TodoItemProps) => {
           <input
             type="checkbox"
             checked={isChecked}
-            onClick={() => setIsChecked(!isChecked)}
+            onClick={() => {
+              // костыль: функция вызывается в двух местах
+              updateTodo(todo.id, todo.text, !isChecked);
+              setIsChecked(!isChecked);
+            }}
             onChange={e => e.target.checked}
           />
           <button onClick={() => setIsOpen(true)}>

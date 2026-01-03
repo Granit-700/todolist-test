@@ -10,13 +10,13 @@ export type TodoListType = TodoItemType[];
 export interface TodoItemProps {
   todo: TodoItemType;
   deleteTodo: (currentId: number) => void;
-  updateTodo: (currentId: number, newText: string) => boolean;
+  updateTodo: (currentId: number, newText: string, newIsDone: boolean) => boolean;
 };
 
 export interface TodoListProps {
   todos: TodoListType;
   deleteTodo: (currentId: number) => void;
-  updateTodo: (currentId: number, newText: string) => boolean;
+  updateTodo: (currentId: number, newText: string, newIsDone: boolean) => boolean;
 };
 
 export interface TodoInputProps {
@@ -29,7 +29,7 @@ export interface TodoRemoveProps {
 };
 
 export interface TodoEditProps {
-  updateTodo: (currentId: number, newText: string) => boolean;
+  updateTodo: (currentId: number, newText: string, newIsDone: boolean) => boolean;
   todo: TodoItemType;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
