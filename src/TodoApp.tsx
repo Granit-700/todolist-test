@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
-import type { TodoListType } from "./types";
+import type { TodoListType, UpdateTodoParams } from "./types";
 import TodoToolbar from "./components/TodoToolbar";
 
 function TodoApp() {
@@ -33,21 +33,24 @@ function TodoApp() {
 
   const deleteAllTodos = () => setTodos([]);
 
-  const updateTodo = (
-    currentId: number,
-    newText: string,
-    newIsDone: boolean
-  ): boolean => {
-    const trimmedText = newText.trim();
-    if (!trimmedText) return false;
+  const updateTodo = ({ id, text, isDone }: UpdateTodoParams): boolean => {
+    if (text !== undefined && !text.trim()) return false;
+
     setTodos(todos.map(todo =>
-      todo.id === currentId
-        ? { ...todo, text: trimmedText, isDone: newIsDone }
+      todo.id === id
+        ? {
+          ...todo,
+          ...(text !== undefined ? { text: text.trim() } : {}),
+          ...(isDone !== undefined ? { isDone } : {}),
+        }
         : todo
     ));
 
     return true;
   };
+
+  console.log(todos);
+
 
   return (
     <div>

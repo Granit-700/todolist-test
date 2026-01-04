@@ -13,7 +13,7 @@ const TodoEdit = ({ updateTodo, todo, setIsOpen }: TodoEditProps) => {
       />
       <button
         onClick={() => {
-          if (updateTodo(todo.id, text, todo.isDone)) {
+          if (updateTodo({ id: todo.id, text })) {
             setIsOpen(false);
           };
         }}
