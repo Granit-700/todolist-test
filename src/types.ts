@@ -33,3 +33,8 @@ export interface TodoEditProps {
   todo: TodoItemType;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+export interface TodoToolbarProps {
+  deleteAllTodos: () => void;
+  todosCount: number;
+};

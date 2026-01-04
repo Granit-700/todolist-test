@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import type { TodoListType } from "./types";
+import TodoToolbar from "./components/TodoToolbar";
 
 function TodoApp() {
 
@@ -30,6 +31,8 @@ function TodoApp() {
     setTodos(filteredTodos);
   };
 
+  const deleteAllTodos = () => setTodos([]);
+
   const updateTodo = (
     currentId: number,
     newText: string,
@@ -49,6 +52,7 @@ function TodoApp() {
   return (
     <div>
       <TodoInput createTodo={createTodo} />
+      <TodoToolbar deleteAllTodos={deleteAllTodos} todosCount={todos.length} />
       <TodoList
         todos={todos}
         deleteTodo={deleteTodo}
