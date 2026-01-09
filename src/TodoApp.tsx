@@ -49,13 +49,17 @@ function TodoApp() {
     return true;
   };
 
+  // debug
   console.log(todos);
-
 
   return (
     <div>
       <TodoInput createTodo={createTodo} />
-      <TodoToolbar deleteAllTodos={deleteAllTodos} todosCount={todos.length} />
+      <TodoToolbar
+        deleteAllTodos={deleteAllTodos}
+        todosCount={todos.length}
+        doneCount={todos.filter(todo => todo.isDone).length}
+      />
       <TodoList
         todos={todos}
         deleteTodo={deleteTodo}

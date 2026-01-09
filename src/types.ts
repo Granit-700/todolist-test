@@ -43,4 +43,5 @@ export interface TodoEditProps {
 export interface TodoToolbarProps {
   deleteAllTodos: () => void;
   todosCount: number;
+  doneCount: number;
 };
