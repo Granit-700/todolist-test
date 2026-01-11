@@ -1,6 +1,9 @@
+import { useDeleteTodo } from "../todoStore";
 import type { TodoRemoveProps } from "../types";
 
-const TodoRemove = ({ deleteTodo, currentId }: TodoRemoveProps) => {
+const TodoRemove = ({ currentId }: TodoRemoveProps) => {
+  const deleteTodo = useDeleteTodo();
+
   return (
     <button onClick={() => deleteTodo(currentId)}>
       Remove

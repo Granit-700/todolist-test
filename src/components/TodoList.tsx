@@ -1,7 +1,9 @@
-import type { TodoListProps } from "../types";
+import { useTodos } from "../todoStore";
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, deleteTodo, updateTodo }: TodoListProps) => {
+const TodoList = () => {
+
+  const todos = useTodos();
 
   return (
     <>
@@ -10,8 +12,6 @@ const TodoList = ({ todos, deleteTodo, updateTodo }: TodoListProps) => {
           {todos.map(todo => <TodoItem
             key={todo.id}
             todo={todo}
-            deleteTodo={deleteTodo}
-            updateTodo={updateTodo}
           />)}
         </ul>
       )}

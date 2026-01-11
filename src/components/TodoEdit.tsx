@@ -1,8 +1,11 @@
 import { useState } from "react";
 import type { TodoEditProps } from "../types";
+import { useUpdateTodo } from "../todoStore";
 
-const TodoEdit = ({ updateTodo, todo, setIsOpen }: TodoEditProps) => {
+const TodoEdit = ({ todo, setIsOpen }: TodoEditProps) => {
   const [text, setText] = useState(todo.text);
+
+  const updateTodo = useUpdateTodo();
 
   return (
     <>

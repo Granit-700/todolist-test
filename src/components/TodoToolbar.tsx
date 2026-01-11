@@ -1,6 +1,11 @@
-import type { TodoToolbarProps } from "../types";
+import { useDeleteAllTodo, useDoneCount, useTodosCount } from "../todoStore";
 
-const TodoToolbar = ({ deleteAllTodos, todosCount, doneCount }: TodoToolbarProps) => {
+const TodoToolbar = () => {
+
+  const todosCount = useTodosCount();
+  const doneCount = useDoneCount();
+  const deleteAllTodos = useDeleteAllTodo();
+
   return (
     <div>
       <span>

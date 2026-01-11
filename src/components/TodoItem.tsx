@@ -2,16 +2,18 @@ import { useState } from "react";
 import type { TodoItemProps } from "../types";
 import TodoEdit from "./TodoEdit";
 import TodoRemove from "./TodoRemove";
+import { useUpdateTodo } from "../todoStore";
 
-const TodoItem = ({ todo, deleteTodo, updateTodo }: TodoItemProps) => {
+const TodoItem = ({ todo }: TodoItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const updateTodo = useUpdateTodo();
 
   return (
     <li>
       {isOpen === true
         ?
         <TodoEdit
-          updateTodo={updateTodo}
           todo={todo}
           setIsOpen={setIsOpen}
         />
@@ -28,7 +30,7 @@ const TodoItem = ({ todo, deleteTodo, updateTodo }: TodoItemProps) => {
           <button onClick={() => setIsOpen(true)}>
             Edit
           </button>
-          <TodoRemove deleteTodo={deleteTodo} currentId={todo.id} />
+          <TodoRemove currentId={todo.id} />
         </>
       }
     </li>

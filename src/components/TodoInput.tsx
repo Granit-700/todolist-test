@@ -1,8 +1,10 @@
 import { useState } from "react";
-import type { TodoInputProps } from "../types";
+import { useCreateTodo } from "../todoStore";
 
-const TodoInput = ({ createTodo }: TodoInputProps) => {
+const TodoInput = () => {
   const [value, setValue] = useState("");
+
+  const createTodo = useCreateTodo();
 
   return (
     <div>
