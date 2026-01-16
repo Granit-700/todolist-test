@@ -1,8 +1,9 @@
+import "./TodoItem.css";
 import { useState } from "react";
-import type { TodoItemProps } from "../types";
-import TodoEdit from "./TodoEdit";
-import TodoRemove from "./TodoRemove";
-import { useUpdateTodo } from "../todoStore";
+import type { TodoItemProps } from "../../types";
+import TodoEdit from "../TodoEdit";
+import TodoRemove from "../TodoRemove";
+import { useUpdateTodo } from "../../todoStore";
 
 const TodoItem = ({ todo }: TodoItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
   const updateTodo = useUpdateTodo();
 
   return (
-    <li>
+    <li className="TodoItem">
       {isOpen === true
         ?
         <TodoEdit
@@ -19,7 +20,6 @@ const TodoItem = ({ todo }: TodoItemProps) => {
         />
         :
         <>
-          <span>{todo.text}</span>
           <input
             type="checkbox"
             checked={todo.isDone}
@@ -27,8 +27,11 @@ const TodoItem = ({ todo }: TodoItemProps) => {
               updateTodo({ id: todo.id, isDone: e.target.checked });
             }}
           />
-          <button onClick={() => setIsOpen(true)}>
-            Edit
+          <p className={`text ${todo.isDone}`} >
+            {todo.text}
+          </p>
+          <button  onClick={() => setIsOpen(true)}>
+            <img src="src/TodoMaket/assets/icons/edit.svg" alt="edit" />
           </button>
           <TodoRemove currentId={todo.id} />
         </>

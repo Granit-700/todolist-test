@@ -1,3 +1,4 @@
+import "./TodoItem/TodoItem.css"
 import { useDeleteTodo } from "../todoStore";
 import type { TodoRemoveProps } from "../types";
 
@@ -5,8 +6,11 @@ const TodoRemove = ({ currentId }: TodoRemoveProps) => {
   const deleteTodo = useDeleteTodo();
 
   return (
-    <button onClick={() => deleteTodo(currentId)}>
-      Remove
+    <button
+      className="delete_Btn"
+      onClick={() => deleteTodo(currentId)}
+    >
+      <img src="src/TodoMaket/assets/icons/cross.svg" alt="cross" />
     </button>
   );
 };

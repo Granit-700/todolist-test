@@ -1,0 +1,20 @@
+.TodoToolBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.counter {
+  display: flex;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 140%;
+  color: #000000;
+}
+
+.TodoToolBar .deleteAllBtn {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 140%;
+  color: #000000;
+}

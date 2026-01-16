@@ -1,5 +1,6 @@
+import "./TodoAdd.css"
 import { useState } from "react";
-import { useCreateTodo } from "../todoStore";
+import { useCreateTodo } from "../../todoStore";
 
 const TodoInput = () => {
   const [value, setValue] = useState("");
@@ -7,15 +8,20 @@ const TodoInput = () => {
   const createTodo = useCreateTodo();
 
   return (
-    <div>
-      <input type="text" value={value} onChange={e => setValue(e.target.value)} />
+    <div className="TodoAdd">
+      <input
+        type="text"
+        placeholder="New task title"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
       <button
         onClick={() => {
           createTodo(value);
           setValue("");
         }}
       >
-        Add Todo
+        Add
       </button>
     </div>
   );

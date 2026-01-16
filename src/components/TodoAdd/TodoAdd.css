@@ -1,0 +1,28 @@
+.TodoAdd {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.TodoAdd input {
+  background-color: #FFFFFF;
+  padding: 12px;
+  padding-left: 16px;
+  border: #D9D9D9 1px solid;
+  border-radius: 8px;
+  width: 100%;
+  line-height: 100%;
+}
+
+.TodoAdd input::placeholder {
+  color: #B3B3B3;
+}
+
+.TodoAdd button {
+  background-color: #2C2C2C;
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 100%;
+}
