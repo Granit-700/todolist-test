@@ -1,8 +1,8 @@
 import "./TodoAdd.css"
 import { useState } from "react";
-import { useCreateTodo } from "../../todoStore";
+import { useCreateTodo } from "../../../todoStore";
 
-const TodoInput = () => {
+const TodoAdd = () => {
   const [value, setValue] = useState("");
 
   const createTodo = useCreateTodo();
@@ -27,4 +27,4 @@ const TodoInput = () => {
   );
 };
 
-export default TodoInput;
+export default TodoAdd;

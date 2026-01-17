@@ -1,7 +1,7 @@
 import "./reset.css";
 import "./style.css";
 import TodoHeader from "../components/Header/Header";
-import TodoInput from "../components/TodoAdd/TodoInput";
+import TodoInput from "../components/TodoInput/TodoInput";
 import TodoList from "../components/TodoList/TodoList";
 import TodoToolbar from "../components/TodoToolbar/TodoToolbar";
 import { useTodos } from "../todoStore";

@@ -31,7 +31,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
             {todo.text}
           </p>
           <button  onClick={() => setIsOpen(true)}>
-            <img src="src/TodoMaket/assets/icons/edit.svg" alt="edit" />
+            <img src="src/assets/icons/edit.svg" alt="edit" />
           </button>
           <TodoRemove currentId={todo.id} />
         </>

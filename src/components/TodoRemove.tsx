@@ -10,7 +10,7 @@ const TodoRemove = ({ currentId }: TodoRemoveProps) => {
       className="delete_Btn"
       onClick={() => deleteTodo(currentId)}
     >
-      <img src="src/TodoMaket/assets/icons/cross.svg" alt="cross" />
+      <img src="src/assets/icons/cross.svg" alt="cross" />
     </button>
   );
 };
